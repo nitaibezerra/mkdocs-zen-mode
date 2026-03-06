@@ -1,0 +1,56 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "mkdocs-zen-mode"
+version = "0.1.0"
+description = "Zen Mode toggle for MkDocs Material — distraction-free reading"
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.9"
+dependencies = ["mkdocs>=1.4"]
+keywords = ["mkdocs", "mkdocs-plugin", "mkdocs-material", "zen-mode", "focus", "distraction-free"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Framework :: MkDocs",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0",
+    "mkdocs-material>=9.0",
+    "ruff",
+]
+e2e = [
+    "pytest>=7.0",
+    "mkdocs-material>=9.0",
+    "playwright",
+]
+
+[project.urls]
+Homepage = "https://github.com/nitaibezerra/mkdocs-zen-mode"
+Repository = "https://github.com/nitaibezerra/mkdocs-zen-mode"
+Issues = "https://github.com/nitaibezerra/mkdocs-zen-mode/issues"
+
+[project.entry-points."mkdocs.plugins"]
+zen-mode = "mkdocs_zen_mode.plugin:ZenModePlugin"
+
+[tool.hatch.build.targets.wheel]
+packages = ["mkdocs_zen_mode"]
+
+[tool.pytest.ini_options]
+markers = [
+    "e2e: end-to-end tests requiring a browser (deselect with '-m \"not e2e\"')",
+]
+
+[tool.ruff]
+target-version = "py39"
+line-length = 100

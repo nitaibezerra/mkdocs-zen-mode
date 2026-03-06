@@ -1,0 +1,167 @@
+/* ==========================================================================
+   mkdocs-zen-mode — Distraction-free reading for MkDocs Material
+   ========================================================================== */
+
+/* --- Toggle Button (header) --- */
+.zen-mode-toggle {
+  cursor: pointer;
+  background: none;
+  border: none;
+  color: currentColor;
+  padding: 0.4rem;
+  margin: 0 0.2rem;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+  display: inline-flex;
+  align-items: center;
+  vertical-align: middle;
+  position: relative;
+  z-index: 1;
+}
+
+.zen-mode-toggle:hover,
+.zen-mode-toggle:focus-visible {
+  opacity: 1;
+}
+
+.zen-mode-toggle svg {
+  width: 1.2rem;
+  height: 1.2rem;
+  fill: currentColor;
+}
+
+/* --- Transition setup on target elements --- */
+.md-sidebar--primary,
+.md-sidebar--secondary,
+.md-header,
+.md-footer,
+.md-tabs {
+  transition:
+    opacity {{TRANSITION}} ease,
+    transform {{TRANSITION}} ease,
+    max-height {{TRANSITION}} ease;
+}
+
+.md-content,
+.md-main__inner {
+  transition:
+    max-width {{TRANSITION}} ease,
+    margin {{TRANSITION}} ease;
+}
+
+/* --- Zen Mode Active: hide elements --- */
+body.zen-mode-active .md-sidebar--primary {
+  opacity: 0;
+  width: 0;
+  min-width: 0;
+  max-height: 0;
+  overflow: hidden;
+  pointer-events: none;
+  padding: 0;
+  margin: 0;
+}
+
+body.zen-mode-active .md-sidebar--secondary {
+  opacity: 0;
+  width: 0;
+  min-width: 0;
+  max-height: 0;
+  overflow: hidden;
+  pointer-events: none;
+  padding: 0;
+  margin: 0;
+}
+
+body.zen-mode-active .md-header {
+  transform: translateY(-100%);
+  opacity: 0;
+  pointer-events: none;
+}
+
+body.zen-mode-active .md-tabs {
+  transform: translateY(-100%);
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+body.zen-mode-active .md-footer {
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+/* --- Zen Mode Active: center content --- */
+body.zen-mode-active .md-main__inner {
+  display: block;
+  max-width: {{MAX_WIDTH}};
+  margin: 0 auto;
+}
+
+body.zen-mode-active .md-content {
+  max-width: 100%;
+  margin: 0 auto;
+  padding-top: 2rem;
+}
+
+body.zen-mode-active .md-main {
+  margin-top: 0;
+}
+
+/* Remove grid gap that leaves empty space */
+body.zen-mode-active .md-container {
+  display: block;
+}
+
+/* --- Floating Action Button (exit zen mode) --- */
+.zen-mode-fab {
+  display: none;
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 100;
+  background: var(--md-primary-fg-color, #536dfe);
+  color: var(--md-primary-bg-color, #fff);
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  opacity: 0.5;
+  transition: opacity 0.2s, transform 0.2s;
+}
+
+.zen-mode-fab:hover,
+.zen-mode-fab:focus-visible {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+.zen-mode-fab svg {
+  width: 1.2rem;
+  height: 1.2rem;
+  fill: currentColor;
+}
+
+body.zen-mode-active .zen-mode-fab {
+  display: flex;
+}
+
+/* --- Icon swap: show collapse icon when active --- */
+.zen-mode-toggle .zen-icon-expand {
+  display: inline;
+}
+.zen-mode-toggle .zen-icon-collapse {
+  display: none;
+}
+body.zen-mode-active .zen-mode-toggle .zen-icon-expand {
+  display: none;
+}
+body.zen-mode-active .zen-mode-toggle .zen-icon-collapse {
+  display: inline;
+}
