@@ -37,6 +37,7 @@ class ZenModeConfig(Config):
     hide_tabs = config_options.Type(bool, default=True)
     hide_toc = config_options.Type(bool, default=True)
     hide_nav = config_options.Type(bool, default=True)
+    hide_announce = config_options.Type(bool, default=True)
     transition_duration = config_options.Type(str, default="0.3s")
 
 
@@ -85,6 +86,7 @@ class ZenModePlugin(BasePlugin[ZenModeConfig]):
             "hide_header": "body.zen-mode-active .md-header",
             "hide_footer": "body.zen-mode-active .md-footer",
             "hide_tabs": "body.zen-mode-active .md-tabs",
+            "hide_announce": "body.zen-mode-active .md-banner",
         }
         for config_key, selector in hide_map.items():
             if not getattr(self.config, config_key):

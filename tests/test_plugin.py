@@ -31,6 +31,7 @@ class TestConfig:
         assert c.hide_tabs is True
         assert c.hide_toc is True
         assert c.hide_nav is True
+        assert c.hide_announce is True
         assert c.transition_duration == "0.3s"
 
     def test_custom_values_applied(self):
@@ -182,10 +183,20 @@ class TestHideOptions:
         # Nav should still be hidden
         assert "body.zen-mode-active .md-sidebar--primary" in result
 
+    def test_hide_announce_false_removes_banner_css(self):
+        p = _make_plugin(hide_announce=False)
+        result = p.on_post_page(SAMPLE_MATERIAL_HTML, page=None, config={})
+        assert "body.zen-mode-active .md-banner" not in result
+
+    def test_hide_announce_true_keeps_banner_css(self):
+        p = _make_plugin(hide_announce=True)
+        result = p.on_post_page(SAMPLE_MATERIAL_HTML, page=None, config={})
+        assert "body.zen-mode-active .md-banner" in result
+
     def test_all_hide_false_still_has_content_centering(self):
         p = _make_plugin(
             hide_header=False, hide_footer=False, hide_tabs=False,
-            hide_nav=False, hide_toc=False,
+            hide_nav=False, hide_toc=False, hide_announce=False,
         )
         result = p.on_post_page(SAMPLE_MATERIAL_HTML, page=None, config={})
         # Content centering should still be present

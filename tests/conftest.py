@@ -51,6 +51,9 @@ SAMPLE_MATERIAL_HTML = """\
   <footer class="md-footer">
     <div class="md-footer-meta">Footer</div>
   </footer>
+  <div class="md-banner">
+    <div class="md-banner__inner">Announcement</div>
+  </div>
 </body>
 </html>
 """

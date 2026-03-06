@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "mkdocs-zen-mode"
-version = "0.1.0"
+version = "0.1.1"
 description = "Zen Mode toggle for MkDocs Material — distraction-free reading"
 readme = "README.md"
 license = "MIT"

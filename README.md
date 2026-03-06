@@ -55,6 +55,7 @@ plugins:
       hide_tabs: true            # Hide navigation tabs
       hide_toc: true             # Hide table of contents (right sidebar)
       hide_nav: true             # Hide navigation (left sidebar)
+      hide_announce: true        # Hide the announce bar
       transition_duration: "0.3s"  # CSS transition speed
 ```
 

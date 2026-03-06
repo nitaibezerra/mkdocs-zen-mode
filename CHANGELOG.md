@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.1.1 (2026-03-06)
+
+- Add `hide_announce` option to hide the announce bar (`.md-banner`) in zen mode
+- Announce bar is hidden by default (consistent with other elements)
+
 ## 0.1.0 (2026-03-06)
 
 - Initial release
